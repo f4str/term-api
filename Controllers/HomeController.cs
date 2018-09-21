@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using term_api.Models;
+using TermAPI.Models;
 
-namespace term_api.Controllers {
+namespace TermAPI.Controllers {
     public class HomeController : Controller {
         public IActionResult Index() {
             return View();
@@ -21,10 +21,6 @@ namespace term_api.Controllers {
         public IActionResult Contact() {
             ViewData["Message"] = "Your contact page.";
 
-            return View();
-        }
-
-        public IActionResult Privacy() {
             return View();
         }
 
