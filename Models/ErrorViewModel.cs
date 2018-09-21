@@ -1,6 +1,6 @@
 using System;
 
-namespace term_api.Models {
+namespace TermAPI.Models {
     public class ErrorViewModel {
         public string RequestId { get; set; }
 
