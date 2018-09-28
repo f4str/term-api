@@ -46,8 +46,15 @@ namespace TermAPI {
 
             app.UseMvc(routes => {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    "term",
+                    "term/{action}",
+                    new { controller = "Term", action = "Index," }
+             );
+                routes.MapRoute(
+                    "default",
+                    "{controller}/{action}",
+                    new { controller = "Home", action = "Index" }
+                );
             });
 
             app.Run(async (context) => {
