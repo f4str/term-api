@@ -6,32 +6,32 @@ using System.Threading.Tasks;
 namespace TermAPI.Models {
     public class Term {
 
-        public int Month { get; set; }
-        public int Day { get; set; }
-        public int Year { get; set; }
         public string Season { get; set; }
+        public int Year { get; set; }
 
         public Term(DateTime date) {
-            Month = date.Month;
-            Day = date.Day;
+            int month = date.Month;
             Year = date.Year;
-            if (Month == 1) {
+            if (month == 1) {
                 Season = "Winter";
             }
-            else if (Month >= 2 && Month <= 5) {
+            else if (month >= 2 && month <= 5) {
                 Season = "Spring";
             }
-            else if (Month >= 6 && Month <= 8) {
+            else if (month >= 6 && month <= 8) {
                 Season = "Summer";
             }
-            else if (Month >= 9 && Month <= 12)
+            else if (month >= 9 && month <= 12)
                 Season = "Fall";
             else {
                 Season = "None";
             }
         }
 
-        public Term(int digit) {
+        public Term(int code) {
+            int digit = code % 10;
+            int year = 1900 + code / 10;
+            Year = year;
             if (digit == 1) {
                 Season = "Winter";
             }
