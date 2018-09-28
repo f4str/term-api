@@ -24,5 +24,11 @@ namespace TermAPI.Controllers {
             return new ObjectResult(term);
         }
 
+        [Route("term/{code:max(9999)}")]
+        public IActionResult TermCode(int code) {
+            Term term = new Term(code);
+            return new ObjectResult(term);
+        }
+
     }
 }
