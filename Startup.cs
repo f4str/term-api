@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace term_api {
+namespace TermAPI {
     public class Startup {
         public Startup(IConfiguration configuration) {
             Configuration = configuration;
@@ -46,8 +46,20 @@ namespace term_api {
 
             app.UseMvc(routes => {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    "term",
+                    "term/{action}",
+                    new { controller = "Term", action = "Index," }
+             );
+                routes.MapRoute(
+                    "default",
+                    "{controller}/{action}",
+                    new { controller = "Home", action = "Index" }
+                );
+            });
+
+            app.Run(async (context) => {
+                context.Response.ContentType = "text/plain";
+                await context.Response.WriteAsync($"Endpoint Not Found");
             });
         }
     }
